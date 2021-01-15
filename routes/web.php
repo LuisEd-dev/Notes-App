@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\{Route, Auth};
-use App\Http\Controllers\ControllerNotas;
+use App\Http\Controllers\{ControllerNotas, ControllerUsuario};
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +22,10 @@ Route::get('/criar', function ()
 Route::post('/criar', [ControllerNotas::class, 'store']);
 Route::get('/apagar/{id}', [ControllerNotas::class, 'destroy']);
 
-Route::get('/entrar', function(){
-    return view('login.login');
-})->name('login');
+Route::get('/entrar', [ControllerUsuario::class, 'index'])->name('login');
+
+Route::post('/entrar', [ControllerUsuario::class, 'store']);
+
 Route::get('/sair', function ()
 {
     Auth::logout();
