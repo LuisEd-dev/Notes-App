@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ $nota->titulo }}</h5>
-                    <p class="card-text" style="height: 100px">
+                    <p class="card-text mb-4" style="height: 100px">
                         @if(Str::length($nota->nota) > 200)
                             {{ Str::substr($nota->nota, 0, 205) }}
                             <a style="text-decoration: none" href="/nota/{{ $nota->id }}"> (...)</a>
@@ -32,7 +32,7 @@
                         @endif
                     </p>
                     <div class="mt-2 mb-2 d-flex flex-row-reverse">
-                        <a href="" class="btn btn-sm btn-danger" style="margin-left: 5px"><i class="fas fa-eraser"></i> Apagar</a>
+                        <a href="/apagar/{{ $nota->id }}" class="btn btn-sm btn-danger" style="margin-left: 5px"><i class="fas fa-eraser"></i> Apagar</a>
                         <a href="#" class="btn btn-sm btn-primary"><i class="far fa-edit"></i> Editar</a>
                     </div>
                     <div class="mt-2 mb-2 d-flex flex-row-reverse">

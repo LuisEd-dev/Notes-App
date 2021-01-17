@@ -12,7 +12,7 @@ class ControllerNotas extends Controller
     {
         $notas = Nota::all()->where('autor', $request->user()->id);
 
-        return view('notas.notas', compact('notas'));
+        return view('notas.notas', compact('notas', 'request'));
     }
     public function store(Request $request)
     {
@@ -25,6 +25,7 @@ class ControllerNotas extends Controller
     public function destroy(Request $request)
     {
         DB::beginTransaction();
+
         Nota::destroy($request->id);
         DB::commit();
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\{Route, Auth};
 use App\Http\Controllers\{ControllerNotas, ControllerUsuario};
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +16,16 @@ use App\Http\Controllers\{ControllerNotas, ControllerUsuario};
 */
 
 Route::get('/', [ControllerNotas::class, 'index'])->name('home')->middleware('auth');
-Route::get('/criar', function ()
+Route::get('/criar', function (Request $request)
 {
-    return view('notas.criar');
+    return view('notas.criar', compact('request'));
 });
 Route::post('/criar', [ControllerNotas::class, 'store']);
 Route::get('/apagar/{id}', [ControllerNotas::class, 'destroy']);
 
 Route::get('/entrar', [ControllerUsuario::class, 'index'])->name('login');
-
-Route::post('/entrar', [ControllerUsuario::class, 'store']);
+Route::post('/entrar', [ControllerUsuario::class, 'entrar']);
+Route::post('/registrar', [ControllerUsuario::class, 'store']);
 
 Route::get('/sair', function ()
 {

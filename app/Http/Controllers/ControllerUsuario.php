@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Usuario;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{DB, Auth, Hash};
 
@@ -10,12 +12,7 @@ class ControllerUsuario extends Controller
 {
     public function index(Request $request)
     {
-
-        //dd(Auth::check());
-        $user = Usuario::create(['email' => 'luis', 'nome' => 'luis', 'senha' => 'luis']);
-        Auth::attempt(['email' => 'luis', 'nome' => 'luis', 'senha' => 'luis']);
-        dd(Auth::check());
-        //return view('login.login');
+        return view('login.login');
     }
     public function store(Request $request)
     {
@@ -27,10 +24,15 @@ class ControllerUsuario extends Controller
 
         //Auth::login($user);
 
-        $usuario = Usuario::create(['nome' => $request->nome, 'email' => $request->email, 'senha' => $request->senha]);
+        $usuario = User::create(['name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request->senha)]);
         Auth::login($usuario);
         DB::commit();
 
+        return redirect()->route('home');
+    }
+    public function entrar(Request $request)
+    {
+        Auth::attempt(['email' => $request->email, 'password' => $request->password]);
         return redirect()->route('home');
 
     }
