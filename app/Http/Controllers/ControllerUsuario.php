@@ -18,12 +18,6 @@ class ControllerUsuario extends Controller
     {
         DB::beginTransaction();
 
-        //$data = $request->except('_token');
-        //$data['password'] = Hash::make($data['password']);
-        //$user = Usuario::create($data);
-
-        //Auth::login($user);
-
         $usuario = User::create(['name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request->senha)]);
         Auth::login($usuario);
         DB::commit();
@@ -32,8 +26,11 @@ class ControllerUsuario extends Controller
     }
     public function entrar(Request $request)
     {
-        Auth::attempt(['email' => $request->email, 'password' => $request->password]);
-        return redirect()->route('home');
+
+        Auth::attempt(['email' => $request->email, 'password' => $request->senha]);
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
 
     }
 }

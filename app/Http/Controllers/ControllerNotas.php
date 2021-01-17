@@ -25,9 +25,11 @@ class ControllerNotas extends Controller
     public function destroy(Request $request)
     {
         DB::beginTransaction();
-
-        Nota::destroy($request->id);
-        DB::commit();
+        if(Nota::where('id', $request->id)->where('autor', $request->user()->id)->delete() == 1){
+            DB::commit();
+        } else {
+            DB::rollback();
+        }
 
         return redirect()->back();
     }
