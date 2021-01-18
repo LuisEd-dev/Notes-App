@@ -21,7 +21,7 @@
 
             <div class="col col-8 offset-2 mt-3 mb-3">
                 <label for="passwordLogin" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="nota" name="passwordLogin" placeholder="Senha" required>
+                <input type="password" class="form-control" id="passwordLogin" name="password" placeholder="Senha" required>
             </div>
 
             <div class="col col-8 offset-2 d-flex justify-content-end">
@@ -48,7 +48,7 @@
 
             <div class="col col-8 offset-2 mt-3 mb-3">
                 <label for="passwordRegistro" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="nota" name="passwordRegistro" placeholder="Senha" required>
+                <input type="password" class="form-control" id="passwordRegistro" name="password" placeholder="Senha" required>
             </div>
 
             <div class="col col-8 offset-2 d-flex justify-content-end">

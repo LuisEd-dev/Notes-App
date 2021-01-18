@@ -36,4 +36,9 @@ class ControllerUsuario extends Controller
         }
 
     }
+    public function editar(Request $request)
+    {
+        $usuario = $request->user();
+        return view('login.editar', compact('usuario'));
+    }
 }

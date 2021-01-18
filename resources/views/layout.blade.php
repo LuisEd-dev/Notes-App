@@ -21,7 +21,7 @@
                 <button class="btn btn-outline-light border-0 dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-user-circle"></i> {{ $request->user()->name }} </button>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item" href="#">Editar</a></li>
+                  <li><a class="dropdown-item" href="/usuario/editar">Editar</a></li>
                   <li><a class="dropdown-item" style="color: red; font-weight: bold" href="/sair">Sair</a></li>
                 </ul>
               </div>
