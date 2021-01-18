@@ -4,20 +4,21 @@
 
 <form action="/criar" method="POST">
     @csrf
-    <div class="mt-3 mb-3">
+    <h2 class="text-center mt-5"><strong>Nova Nota</strong></h2>
+    <div class="col col-12 col-md-8 offset-md-2 mt-3 mb-3">
         <label for="titulo" class="form-label">Título</label>
         <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título da Nota">
     </div>
 
-    <div class="mb-3">
+    <div class="col col-12 col-md-8 offset-md-2 mb-3">
         <label for="nota" class="form-label">Nota</label>
         <textarea class="form-control" id="nota" name="nota" rows="3" placeholder="Conteúdo da Nota"></textarea>
     </div>
 
-    <div class="d-flex flex-row-reverse">
+    <div class="col col-12 col-md-8 offset-md-2 d-flex justify-content-end">
+        <a href="/" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Cancelar</a>
         <button type="submit" class="btn btn-success"><i class="fas fa-pencil-alt"></i> Salvar Nota</button>
     </div>
-
 </form>
 
 @endsection
