@@ -2,6 +2,12 @@
 
 @section('conteudo')
 
+@if($request->session()->has('flash'))
+<div class="col col-10 offset-1 mt-2 alert alert-danger text-center" role="alert">
+    {{ $request->session()->get('flash') }}
+  </div>
+@endif
+
 <div class="row">
     <div class="col col-12 col-lg-6 mt-5 pt-3 pb-3">
         <h2 class="text-center"><strong>Entrar</strong></h2>
@@ -37,7 +43,7 @@
 
             <div class="col col-8 offset-2 mt-3 mb-3">
                 <label for="emailRegistro" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="emailRegistro" placeholder="Endereço de e-mail" required>
+                <input type="email" class="form-control" id="emailRegistro" name="email" placeholder="Endereço de e-mail" required>
             </div>
 
             <div class="col col-8 offset-2 mt-3 mb-3">

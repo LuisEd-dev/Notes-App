@@ -22,6 +22,7 @@ Route::get('/criar', function (Request $request)
 });
 Route::post('/criar', [ControllerNotas::class, 'store']);
 Route::get('/apagar/{id}', [ControllerNotas::class, 'destroy']);
+Route::get('/nota/{id}', [ControllerNotas::class, 'index']);
 
 Route::get('/entrar', [ControllerUsuario::class, 'index'])->name('login');
 Route::post('/entrar', [ControllerUsuario::class, 'entrar']);
