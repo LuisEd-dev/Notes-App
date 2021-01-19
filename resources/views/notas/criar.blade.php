@@ -17,7 +17,7 @@
 
     <div class="col col-12 col-md-8 offset-md-2 d-flex justify-content-end">
         <a href="/" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Cancelar</a>
-        <button type="submit" class="btn btn-success" style="margin-left: 5px"><i class="fas fa-pencil-alt"></i> Salvar Nota</button>
+        <button type="submit" class="btn btn-success margin-left"><i class="fas fa-pencil-alt"></i> Salvar Nota</button>
     </div>
 </form>
 

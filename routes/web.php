@@ -28,6 +28,7 @@ Route::get('/nota/{id}/editar', [ControllerNotas::class, 'editar']);
 Route::post('/nota/{id}/editar', [ControllerEditarNota::class, 'acao_editar']);
 
 Route::get('/entrar', [ControllerUsuario::class, 'index'])->name('login');
+
 Route::post('/entrar', [ControllerUsuario::class, 'entrar']);
 Route::post('/registrar', [ControllerUsuario::class, 'store']);
 

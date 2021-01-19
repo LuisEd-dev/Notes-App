@@ -27,8 +27,8 @@
 
         <div class="col col-12 col-md-8 offset-md-2 d-flex justify-content-end">
             <a href="/" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Voltar</a>
-            <a href="/apagar/{{ $nota->id }}" class="btn btn-danger" style="margin-left: 5px" onclick="return confirm('Tem certeza que deseja excluir {{ addslashes($nota->titulo) }}?')"><i class="fas fa-eraser"></i> Apagar</a>
-            <button type="submit" class="btn btn-warning" style="margin-left: 5px"><i class="far fa-edit"></i></i> Editar</button>
+            <a href="/apagar/{{ $nota->id }}" class="btn btn-danger margin-left" onclick="return confirm('Tem certeza que deseja excluir {{ addslashes($nota->titulo) }}?')"><i class="fas fa-eraser"></i> Apagar</a>
+            <button type="submit" class="btn btn-warning margin-left"><i class="far fa-edit"></i></i> Editar</button>
         </div>
 </form>
 

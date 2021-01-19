@@ -37,7 +37,7 @@
                     </p>
                     <div class="mt-2 mb-2 d-flex justify-content-end">
                         <a href="/nota/{{ $nota->id }}/editar" class="btn btn-sm btn-primary"><i class="far fa-edit"></i> Editar</a>
-                        <a href="/apagar/{{ $nota->id }}" class="btn btn-sm btn-danger" style="margin-left: 5px" onclick="return confirm('Tem certeza que deseja excluir {{ addslashes($nota->titulo) }}?')"><i class="fas fa-eraser"></i> Apagar</a>
+                        <a href="/apagar/{{ $nota->id }}" class="btn btn-sm btn-danger margin-left" onclick="return confirm('Tem certeza que deseja excluir {{ addslashes($nota->titulo) }}?')"><i class="fas fa-eraser"></i> Apagar</a>
                     </div>
                     <div class="mt-2 mb-2 d-flex justify-content-end">
                         <small>Ultima alteração: {{ $nota->getAlteracao() }}</small>
