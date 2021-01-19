@@ -8,7 +8,7 @@
 
 
 <h2 class="text-center mt-5"><strong>Editar Nota</strong></h2>
-<form method="POST">
+<form method="POST" onsubmit="return confirm('Tem certeza que deseja editar {{ addslashes($nota->titulo) }}?')">
         @csrf
         <input type="hidden" value="{{ $nota->id }}" name="id">
         <div class="col col-12 col-md-8 offset-md-2 mt-3 mb-3">
@@ -27,7 +27,8 @@
 
         <div class="col col-12 col-md-8 offset-md-2 d-flex justify-content-end">
             <a href="/" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Voltar</a>
-            <button type="submit" class="btn btn-warning"><i class="far fa-edit"></i></i> Editar</button>
+            <a href="/apagar/{{ $nota->id }}" class="btn btn-danger" style="margin-left: 5px" onclick="return confirm('Tem certeza que deseja excluir {{ addslashes($nota->titulo) }}?')"><i class="fas fa-eraser"></i> Apagar</a>
+            <button type="submit" class="btn btn-warning" style="margin-left: 5px"><i class="far fa-edit"></i></i> Editar</button>
         </div>
 </form>
 
