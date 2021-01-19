@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\{Route, Auth};
-use App\Http\Controllers\{ControllerNotas, ControllerUsuario};
+use App\Http\Controllers\{ControllerEditarUser, ControllerNotas, ControllerUsuario};
 use Illuminate\Http\Request;
 
 /*
@@ -29,6 +29,7 @@ Route::post('/entrar', [ControllerUsuario::class, 'entrar']);
 Route::post('/registrar', [ControllerUsuario::class, 'store']);
 
 Route::get('/usuario/editar', [ControllerUsuario::class, 'editar']);
+Route::post('/usuario/editar', [ControllerEditarUser::class, 'acao_editar']);
 
 Route::get('/sair', function ()
 {

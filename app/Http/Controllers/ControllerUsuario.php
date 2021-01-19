@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Usuario;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{DB, Auth, Hash};
 
@@ -38,7 +36,6 @@ class ControllerUsuario extends Controller
     }
     public function editar(Request $request)
     {
-        $usuario = $request->user();
-        return view('login.editar', compact('usuario'));
+        return view('login.editar', compact('request'));
     }
 }
