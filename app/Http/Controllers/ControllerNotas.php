@@ -40,6 +40,18 @@ class ControllerNotas extends Controller
             $autor = User::find($nota->autor);
             return view('notas.exibir', compact('request', 'nota', 'autor'));
         } else {
+            $request->session()->flash('flash', "Nota não encontrada ou de outro autor!");
+            return redirect()->route('home');
+        }
+    }
+    public function editar(Request $request)
+    {
+        $nota = Nota::where('id',$request->id)->where('autor', $request->user()->id)->first();
+        if($nota){
+            $autor = User::find($nota->autor);
+            return view('notas.editar', compact('nota', 'autor', 'request'));
+        } else {
+            $request->session()->flash('flash', "Nota não encontrada ou de outro autor!");
             return redirect()->route('home');
         }
     }

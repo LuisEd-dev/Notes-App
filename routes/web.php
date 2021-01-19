@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\{Route, Auth};
-use App\Http\Controllers\{ControllerEditarUser, ControllerNotas, ControllerUsuario};
+use App\Http\Controllers\{ControllerEditarNota, ControllerEditarUser, ControllerNotas, ControllerUsuario};
 use Illuminate\Http\Request;
 
 /*
@@ -23,6 +23,9 @@ Route::get('/criar', function (Request $request)
 Route::post('/criar', [ControllerNotas::class, 'store']);
 Route::get('/apagar/{id}', [ControllerNotas::class, 'destroy']);
 Route::get('/nota/{id}', [ControllerNotas::class, 'nota']);
+
+Route::get('/nota/{id}/editar', [ControllerNotas::class, 'editar']);
+Route::post('/nota/{id}/editar', [ControllerEditarNota::class, 'acao_editar']);
 
 Route::get('/entrar', [ControllerUsuario::class, 'index'])->name('login');
 Route::post('/entrar', [ControllerUsuario::class, 'entrar']);

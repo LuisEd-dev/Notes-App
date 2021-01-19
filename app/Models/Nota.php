@@ -18,6 +18,6 @@ class Nota extends Model
     }
 
     public function getAlteracao(){
-        return Carbon::parse( $this->alteracao )->format('d/m/Y - H:m:s');
+        return Carbon::parse( $this->alteracao )->format('d/m/Y - H:i:s');
     }
 }

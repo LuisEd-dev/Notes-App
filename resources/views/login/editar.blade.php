@@ -3,7 +3,7 @@
 @section('conteudo')
 
 @if ($request->session()->has('flash'))
-<div class="col col-10 offset-1 mt-2 alert alert-danger" role="alert">{{ $request->session()->get('flash') }}</div>
+<div class="col col-10 offset-1 mt-2 alert alert-{{ $request->session()->get('alert') }}" role="alert">{{ $request->session()->get('flash') }}</div>
 @endif
 
 <div class="col col-12 mt-5 pt-3 pb-3">
@@ -30,6 +30,7 @@
         </div>
 
         <div class="col col-10 offset-1 d-flex justify-content-end">
+            <a href="/" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Voltar</a>
             <button type="submit" class="btn btn-warning"><i class="far fa-edit"></i></i> Editar</button>
         </div>
 

@@ -16,7 +16,7 @@ class ControllerUsuario extends Controller
     {
         DB::beginTransaction();
 
-        $usuario = User::create(['name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request->senha)]);
+        $usuario = User::create(['name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request->password)]);
         Auth::login($usuario);
         DB::commit();
         $request->session()->flash('flash', 'Conta criada com sucesso!');
@@ -24,8 +24,7 @@ class ControllerUsuario extends Controller
     }
     public function entrar(Request $request)
     {
-
-        Auth::attempt(['email' => $request->email, 'password' => $request->senha]);
+        Auth::attempt(['email' => $request->email, 'password' => $request->password]);
         if(Auth::check()){
             return redirect()->route('home');
         } else {
