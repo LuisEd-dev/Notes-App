@@ -5,29 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\{DB, Validator, Storage};
+use Illuminate\Support\Facades\{DB, Validator, Hash};
+use App\Services\VerificadorSenha;
 
 class ControllerEditarUser extends Controller
 {
     public function acao_editar(Request $request)
     {
-
         if($request->password){
-            $rules = array(
-                'password' => 'required|min:5|same:password_confirmation',
-                'password_confirmation' => 'required'
-            );
-            $messages = array(
-                    'password.same' => 'Confirme a senha novamente',
-                    'password.min' => 'Senha muito curta!'
-                );
-            $validator = Validator::make( $request->except('_token'), $rules, $messages );
 
-            if ( $validator->fails() )
+            $validator = new VerificadorSenha;
+
+            if ( $validator->validar($request)->fails() )
             {
-                $request->session()->flash('flash', $validator->errors()->first());
+                $request->session()->flash('flash', $validator->validar($request)->errors()->first());
+                $request->session()->flash('alert', 'danger');
                 return redirect()->back();
             } else{
 

@@ -1,4 +1,4 @@
-@extends('login.layout')
+@extends('layout')
 
 @section('conteudo')
 
@@ -47,6 +47,11 @@
             <div class="col col-8 offset-2 mt-3 mb-3">
                 <label for="passwordRegistro" class="form-label">Senha</label>
                 <input type="password" class="form-control" id="passwordRegistro" name="password" placeholder="Senha" required>
+            </div>
+
+            <div class="col col-8 offset-2 mt-3 mb-3">
+                <label for="passwordRepetir" class="form-label">Repita a senha</label>
+                <input type="password" class="form-control" id="passwordRepetir" name="password_confirmation" placeholder="Repetir senha" required>
             </div>
 
             <div class="col col-8 offset-2 d-flex justify-content-end">

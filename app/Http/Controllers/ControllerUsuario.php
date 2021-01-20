@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Services\VerificadorSenha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{DB, Auth, Hash};
 
@@ -14,13 +15,19 @@ class ControllerUsuario extends Controller
     }
     public function store(Request $request)
     {
-        DB::beginTransaction();
-
-        $usuario = User::create(['name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request->password)]);
-        Auth::login($usuario);
-        DB::commit();
-        $request->session()->flash('flash', 'Conta criada com sucesso!');
-        return redirect()->route('home');
+        $validator = new VerificadorSenha;
+        if ($validator->validar($request)->fails()){
+            $request->session()->flash('flash', $validator->validar($request)->errors()->first());
+            $request->session()->flash('alert', 'danger');
+            return redirect()->back();
+        } else{
+            DB::beginTransaction();
+            $usuario = User::create(['name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request->password)]);
+            Auth::login($usuario);
+            DB::commit();
+            $request->session()->flash('flash', 'Conta criada com sucesso!');
+            return redirect()->route('home');
+        }
     }
     public function entrar(Request $request)
     {
