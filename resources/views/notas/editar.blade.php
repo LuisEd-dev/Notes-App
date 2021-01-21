@@ -3,7 +3,7 @@
 @section('conteudo')
 
 @if ($request->session()->has('flash'))
-<div class="col col-10 offset-1 mt-2 alert alert-{{ $request->session()->get('alert') }}" role="alert">{{ $request->session()->get('flash') }}</div>
+<div class="col col-10 offset-1 mt-2 alert alert-{{ $request->session()->get('alert') }} text-center" role="alert">{{ $request->session()->get('flash') }}</div>
 @endif
 
 

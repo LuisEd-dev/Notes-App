@@ -21,10 +21,10 @@ class ControllerEditarNota extends Controller
             $nota->alteracao = now();
             $nota->save();
             DB::commit();
-            $request->session()->flash('flash', "Usuário alterado com sucesso!");
+            $request->session()->flash('flash', "Nota alterada com sucesso!");
             $request->session()->flash('alert', "success");
         } catch(Exception $ex){
-            $request->session()->flash('flash', `Falha ao alterar dados do usuário!\n${$ex}`);
+            $request->session()->flash('flash', `Falha ao alterar dados da nota!\n${$ex}`);
             $request->session()->flash('alert', `danger`);
         } finally{
             return redirect()->back();

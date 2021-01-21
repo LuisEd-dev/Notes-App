@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Nota;
-use App\Models\User;
+use App\Models\{Nota, User};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -41,6 +40,7 @@ class ControllerNotas extends Controller
             return view('notas.exibir', compact('request', 'nota', 'autor'));
         } else {
             $request->session()->flash('flash', "Nota não encontrada ou de outro autor!");
+            $request->session()->flash('alert', "danger");
             return redirect()->route('home');
         }
     }
@@ -52,6 +52,7 @@ class ControllerNotas extends Controller
             return view('notas.editar', compact('nota', 'autor', 'request'));
         } else {
             $request->session()->flash('flash', "Nota não encontrada ou de outro autor!");
+            $request->session()->flash('alert', "danger");
             return redirect()->route('home');
         }
     }

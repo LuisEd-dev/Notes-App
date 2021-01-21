@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\{DB, Validator, Hash};
-use App\Services\VerificadorSenha;
+use Illuminate\Support\Facades\{DB, Hash};
+use App\Services\VerificadorEmailSenha;
 
 class ControllerEditarUser extends Controller
 {
@@ -14,7 +14,7 @@ class ControllerEditarUser extends Controller
     {
         if($request->password){
 
-            $validator = new VerificadorSenha;
+            $validator = new VerificadorEmailSenha;
 
             if ( $validator->validar($request)->fails() )
             {
