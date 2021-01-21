@@ -12,18 +12,16 @@ class ControllerEditarUser extends Controller
 {
     public function acao_editar(Request $request)
     {
-        if($request->password){
+        if ($request->password) {
 
             $validator = new VerificadorEmailSenha;
 
-            if ( $validator->validar($request)->fails() )
-            {
-                $request->session()->flash('flash', $validator->validar($request)->errors()->first());
+            if ($validator->validar($request)->fails() && $validator->validar($request)->errors()->messages()['password'] != 0 ) {
+                $request->session()->flash('flash', (string) $validator->validar($request)->errors()->messages()['password'][0]);
                 $request->session()->flash('alert', 'danger');
                 return redirect()->back();
-            } else{
-
-                try{
+            } else {
+                try {
                     DB::beginTransaction();
                     $user = User::find(auth()->user()->id);
                     $user->name = $request->name;
@@ -32,18 +30,15 @@ class ControllerEditarUser extends Controller
                     DB::commit();
                     $request->session()->flash('flash', "Usuário alterado com sucesso!");
                     $request->session()->flash('alert', "success");
-                } catch(Exception $ex){
+                } catch (Exception $ex) {
                     $request->session()->flash('flash', `Falha ao alterar dados do usuário!\n${$ex}`);
                     $request->session()->flash('alert', `danger`);
-                }
-                finally{
+                } finally {
                     return redirect()->back();
                 }
-
             }
-
         } else {
-            try{
+            try {
                 DB::beginTransaction();
                 $user = User::find(auth()->user()->id);
                 $user->name = $request->name;
@@ -51,11 +46,10 @@ class ControllerEditarUser extends Controller
                 DB::commit();
                 $request->session()->flash('flash', "Usuário alterado com sucesso!");
                 $request->session()->flash('alert', "success");
-            } catch(Exception $ex){
+            } catch (Exception $ex) {
                 $request->session()->flash('flash', `Falha ao alterar dados do usuário!\n${$ex}`);
                 $request->session()->flash('alert', `danger`);
-            }
-            finally{
+            } finally {
                 return redirect()->back();
             }
         }
