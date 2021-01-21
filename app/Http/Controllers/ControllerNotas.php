@@ -26,11 +26,15 @@ class ControllerNotas extends Controller
         DB::beginTransaction();
         if(Nota::where('id', $request->id)->where('autor', $request->user()->id)->delete() == 1){
             DB::commit();
+            $request->session()->flash('flash', "Nota excluida com sucesso!");
+            $request->session()->flash('alert', "success");
         } else {
+            $request->session()->flash('flash', "Não foi possível excluir a nota!");
+            $request->session()->flash('alert', "danger");
             DB::rollback();
         }
 
-        return redirect()->back();
+        return redirect()->route('home');
     }
     public function nota(Request $request)
     {

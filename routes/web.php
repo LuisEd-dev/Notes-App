@@ -15,7 +15,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', [ControllerNotas::class, 'index'])->name('home')->middleware('auth');
+Route::get('/', function(){
+    return view('inicial');
+});
+Route::get('/home', [ControllerNotas::class, 'index'])->name('home')->middleware('auth');
 Route::get('/criar', function (Request $request)
 {
     return view('notas.criar', compact('request'));
