@@ -30,7 +30,7 @@
         </div>
 
         <div class="col col-12 col-md-8 offset-md-2 d-flex justify-content-end">
-            <a href="/" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Voltar</a>
+            <a href="/home" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Voltar</a>
             <button type="submit" class="btn btn-warning margin-left"><i class="far fa-edit"></i></i> Editar</button>
         </div>
 

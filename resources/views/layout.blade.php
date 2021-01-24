@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Notas</title>
+    <title>Notes App</title>
     <link rel="stylesheet" href="/css/main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/8411b7fba2.js" crossorigin="anonymous"></script>
@@ -13,15 +13,14 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/"><i class="far fa-sticky-note"></i> Notas</a>
+          <a class="navbar-brand" href="/home"><i class="far fa-sticky-note"></i> Notes App </a>
             @auth
 
             <div class="dropdown">
                 <button class="btn btn-outline-light border-0 dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-user-circle"></i> {{ $request->user()->name }} </button>
-
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <li><a class="dropdown-item" href="/usuario/editar">Editar</a></li>
-                  <li><a class="dropdown-item" style="color: red; font-weight: bold" href="/sair">Sair</a></li>
+                  <li><a class="dropdown-item" style="color: red; font-weight: bold;" href="/sair">Sair</a></li>
                 </ul>
               </div>
             @endauth

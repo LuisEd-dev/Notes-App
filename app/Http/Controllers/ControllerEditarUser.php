@@ -16,7 +16,7 @@ class ControllerEditarUser extends Controller
 
             $validator = new VerificadorEmailSenha;
 
-            if ($validator->validar($request)->fails() && $validator->validar($request)->errors()->messages()['password'] != 0 ) {
+            if ($validator->validar($request)->fails() && isset($validator->validar($request)->errors()->messages()['password'])) {
                 $request->session()->flash('flash', (string) $validator->validar($request)->errors()->messages()['password'][0]);
                 $request->session()->flash('alert', 'danger');
                 return redirect()->back();

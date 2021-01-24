@@ -26,11 +26,11 @@
         <div class="col col-12 col-md-6 col-lg-4 mb-3">
             <div class="card">
                 <div class="card-body">
-                    <a href="/nota/{{ $nota->id }}" style="text-decoration: none"><h5 class="card-title link"><i class="fas fa-sticky-note"></i> {{ $nota->titulo }}</h5></a>
+                    <a class="text-decoration-none" href="/nota/{{ $nota->id }}"><h5 class="card-title link"><i class="fas fa-sticky-note"></i> {{ $nota->titulo }}</h5></a>
                     <p class="card-text mb-4" style="height: 100px">
                         @if(Str::length($nota->nota) > 200)
                             {{ Str::substr($nota->nota, 0, 205) }}
-                            <a style="text-decoration: none" href="/nota/{{ $nota->id }}"> (...)</a>
+                            <a class="text-decoration-none" href="/nota/{{ $nota->id }}"> (...)</a>
                         @else
                             {{ $nota->nota }}
                         @endif
