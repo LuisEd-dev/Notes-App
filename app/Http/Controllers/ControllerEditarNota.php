@@ -13,7 +13,7 @@ class ControllerEditarNota extends Controller
     {
         try{
             DB::beginTransaction();
-            $nota = Nota::find($request->id)->where('autor', $request->user()->id)->first();
+            $nota = Nota::where('id', $request->id)->where('autor', $request->user()->id)->first();
             $nota->titulo = $request->titulo;
             if($request->nota){
                 $nota->nota = $request->nota;
@@ -27,7 +27,7 @@ class ControllerEditarNota extends Controller
             $request->session()->flash('flash', `Falha ao alterar dados da nota!\n${$ex}`);
             $request->session()->flash('alert', `danger`);
         } finally{
-            return redirect()->back();
+            return redirect()->route('home');
         }
 
     }

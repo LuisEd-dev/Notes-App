@@ -28,8 +28,8 @@
                 <div class="card-body">
                     <a class="text-decoration-none" href="/nota/{{ $nota->id }}"><h5 class="card-title link"><i class="fas fa-sticky-note"></i> {{ $nota->titulo }}</h5></a>
                     <p class="card-text mb-4" style="height: 100px">
-                        @if(Str::length($nota->nota) > 200)
-                            {{ Str::substr($nota->nota, 0, 205) }}
+                        @if(Str::substrCount((nl2br($nota->nota)), '<br />') > 5 || Str::length($nota->nota) > 200)
+                        {{ Str::substr($nota->nota, 0, 205) }}
                             <a class="text-decoration-none" href="/nota/{{ $nota->id }}"> (...)</a>
                         @else
                             {{ $nota->nota }}

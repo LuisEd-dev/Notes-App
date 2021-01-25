@@ -26,6 +26,7 @@ Route::get('/criar', function (Request $request)
 Route::post('/criar', [ControllerNotas::class, 'store']);
 Route::get('/apagar/{id}', [ControllerNotas::class, 'destroy']);
 Route::get('/nota/{id}', [ControllerNotas::class, 'nota']);
+Route::get('/nota/{id}/markdown', [ControllerNotas::class, 'nota']);
 
 Route::get('/nota/{id}/editar', [ControllerNotas::class, 'editar']);
 Route::post('/nota/{id}/editar', [ControllerEditarNota::class, 'acao_editar']);
